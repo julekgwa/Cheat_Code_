@@ -12,11 +12,13 @@
 
 #include <unistd.h>
 #include <stdlib.h>
+#include "get_input.h"
+
 #define LEN 1024
 
-int		main(int argc, char **argv)
+char		*get_stdin(int argc, char **argv)
 {
-	char		input[LEN];
+	char		*input;
 	int			i;
 	int			fd;
 
@@ -27,17 +29,15 @@ int		main(int argc, char **argv)
 		write(1, "\n", 1);
 	else
 	{
+        input = malloc(sizeof(char*) * LEN);
 		while (argv[i] != '\0')
-		{
 			i++;
-		}
 		i = 0;
 		read(fd, input, LEN);
 		while (input[i] != '\0')
-		{
 			i++;
-		}
 		write(1, "\n", 1);
 		return (0);
 	}
+    return (input);
 }
